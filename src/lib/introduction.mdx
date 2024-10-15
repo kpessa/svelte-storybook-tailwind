@@ -1,9 +1,9 @@
-import {Meta} from '@storybook/blocks';
+import { Meta } from '@storybook/blocks';
 import Social from '../assets/social.jpg';
 
 <Meta title="Intro/Welcome" />
 
-# Svelte 3.5 + Storybook 7 + TailwindCSS 3
+# Svelte 4.2 + Storybook 8 + TailwindCSS 3
 
 <img src={Social} alt="Svelte + Storybook + TailwindCSS" />
 
@@ -15,9 +15,9 @@ Visit the website to see the outcome: [Svelte + Storybook + TailwindCSS](https:/
 npx degit jerriclynsjohn/svelte-storybook-tailwind my-svelte-project
 cd my-svelte-project
 
-npm
-npm run dev
-npm run storybook
+pnpm install
+pnpm run dev
+pnpm run storybook
 ```
 
 This has improved a lot since I started this repo, but I feel that there is still a need to just clone the repo and kickstart the project, so here I am again updating this and I'll keep this repo updated. I also feel that there is a need for a repo which shows some best practices.
@@ -34,29 +34,29 @@ This has improved a lot since I started this repo, but I feel that there is stil
 
 #### Instantiate Svelte + Vite app
 
--   Initiate the project using `npm create vite@latest`
--   Select Svelte + Javascript from the CLI
--   You have a basic Svelte + Vite app ready
+- Initiate the project using `pnpm create vite@latest`
+- Select Svelte + Javascript from the CLI
+- You have a basic Svelte + Vite app ready
 
 #### Add Tailwind to the project
 
--   Install dependencies `npm install -D tailwindcss postcss autoprefixer`
--   Instantiate the tailwind and postcss config files using `npx tailwindcss init -p`
--   Update the tailwind config as shown below to accomodate for Svelte components
+- Install dependencies `pnpm install -D tailwindcss postcss autoprefixer`
+- Instantiate the tailwind and postcss config files using `npx tailwindcss init -p`
+- Update the tailwind config as shown below to accomodate for Svelte components
 
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./index.html', './src/**/*.{svelte,js,ts}'],
-    theme: {
-        extend: {}
-    },
-    plugins: []
+  content: ['./index.html', './src/**/*.{svelte,js,ts}'],
+  theme: {
+    extend: {}
+  },
+  plugins: []
 };
 ``;
 ```
 
--   Add Tailwind directive to your CSS at `./src/index.css`
+- Add Tailwind directive to your CSS at `./src/app.css`
 
 ```css
 @tailwind base;
@@ -64,45 +64,46 @@ module.exports = {
 @tailwind utilities;
 ```
 
--   Import CSS into `./src/main.js`
+- Import CSS into `./src/main.ts`
 
-```js
-import './index.css';
+```ts
+import './app.css';
 import App from './App.svelte';
 
 const app = new App({
-    target: document.getElementById('app')
+  target: document.getElementById('app')
 });
 
 export default app;
 ```
 
--   With this we have tailwind setup in the project
+- With this we have tailwind setup in the project
 
 #### Add storybook and native story format into the project
 
--   Instantiate by running `npx storybook@next init`
--   Hook up TailwindCSS by importing the CSS into `./.storybook/preview.js`
+- Instantiate by running `pnpm dlx storybook@latest init`
+- Hook up TailwindCSS by importing the CSS into `./.storybook/preview.ts`
 
-```js
-import '../src/index.css';
+```ts
+import type { Preview } from '@storybook/svelte';
+import '../src/app.css';
 
-export const parameters = {
-    backgrounds: {
-        default: 'light'
-    },
-    actions: {argTypesRegex: '^on[A-Z].*'},
+const preview: Preview = {
+  parameters: {
     controls: {
-        matchers: {
-            color: /(background|color)$/i,
-            date: /Date$/
-        }
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i
+      }
     }
+  }
 };
+
+export default preview;
 ```
 
--   This completes the setup required for the project
+- This completes the setup required for the project
 
 ### Best Practices for UI Component Library
 
--   Watchout for this space for more, will be updatin with some good best practises till then do feel free to explore the example UI components used for this website.
+- Watchout for this space for more, will be updatin with some good best practises till then do feel free to explore the example UI components used for this website.

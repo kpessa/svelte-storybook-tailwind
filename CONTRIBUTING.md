@@ -48,4 +48,4 @@
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
-    with a clear title and description against the `master` branch.
+   with a clear title and description against the `master` branch.
