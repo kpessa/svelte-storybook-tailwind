@@ -10,7 +10,11 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "eslint . --ext .js,.ts,.svelte",
+    "lint:fix": "eslint . --ext .js,.ts,.svelte --fix",
+    "format": "prettier --write .",
+    "check:all": "npm run check && npm run lint"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^8.3.5",
@@ -25,8 +29,12 @@
     "@storybook/theming": "^8.3.5",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@tsconfig/svelte": "^5.0.4",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.12.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-storybook": "^0.11.4",
     "eslint-plugin-svelte": "^2.44.1",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",

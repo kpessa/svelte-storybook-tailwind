@@ -1,10 +1,27 @@
-.DS_Store
-node_modules
-/build
-/package
-.env
-.env.*
+# Build output
+dist/
+build/
+
+# Dependencies
+node_modules/
+
+# Storybook
+storybook-static/
+
+# Coverage reports
+coverage/
+
+# Environment files
+.env*
 !.env.example
+
+# Generated files
+*.generated.*
+*.min.js
+
+# Cache directories
+.cache/
+.svelte-kit/
 
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml
