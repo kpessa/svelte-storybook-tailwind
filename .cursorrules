@@ -1,0 +1,136 @@
+# .cursor-rules
+
+These rules guide the development of our static LLM Chat Interface using Svelte 4 with Storybook 8 and Tailwind CSS, ensuring clean, maintainable, and consistent code with proper version control.
+
+## Static Website Principles
+
+- Ensure all API calls happen client-side without server dependencies
+- Design the application to be deployable to static hosting (GitHub Pages, Netlify, Vercel)
+- Use client-side storage (localStorage/IndexedDB) for persistence
+- Keep API key management secure with proper client-side patterns
+- Optimize bundle size for faster loading
+- Implement progressive enhancement where possible
+
+## Code Structure & Organization
+
+- Use atomic design principles (atoms, molecules, organisms, templates, pages)
+- Keep components focused on a single responsibility
+- Maximum file length: 300 lines
+- Maximum function length: 50 lines
+- Separate business logic from UI components
+- Use Svelte stores for state management
+- Group related files in feature-based directories
+
+## Svelte 4 Usage
+
+- Keep component logic in the script section, not inline in the template
+- Use reactive declarations ($: syntax) appropriately
+- Prefer props over "prop drilling" with context API when practical
+- Use Svelte's lifecycle functions (onMount, onDestroy, etc.) correctly
+- Create reusable actions for common DOM interactions
+- Use TypeScript for all components and scripts
+
+## Static Build Configuration
+
+- Configure SvelteKit or Vite for static site generation
+- Ensure all dynamic routes are prerendered or handled client-side
+- Optimize assets for production builds
+- Configure proper caching headers in deployment
+- Ensure URLs and paths work correctly in static context
+
+## Component Guidelines
+
+- Props should be clearly defined at the top of the script section
+- Components should have a clear purpose described in a comment
+- Components that manage their own state should be documented
+- Include default prop values where appropriate
+- Use Svelte's slot system effectively for component composition
+
+## Styling
+
+- Use Tailwind utility classes for styling
+- Group Tailwind classes by category (layout, typography, colors, etc.)
+- Avoid inline styles except for dynamic values
+- Extract complex styling patterns into reusable components
+- Maintain responsive design principles throughout
+- Consider component-scoped CSS for unique styling needs
+
+## Performance
+
+- Keep reactive dependencies minimal
+- Avoid unnecessary computations in reactive statements
+- Use `{#each}` with keyed items for lists
+- Prefer Svelte transitions for animations
+- Implement code-splitting for larger components
+- Optimize API calls with debouncing/throttling
+- Implement virtual scrolling for long chat histories
+
+## Client-Side API Handling
+
+- All API calls must use try/catch for error handling
+- Use Svelte stores for API state (loading, error, data)
+- Implement retries for transient failures
+- Keep API service layer separate from UI components
+- Store API keys securely (client-side encrypted storage when possible)
+- Implement proper CORS handling for third-party API calls
+- Use fetch or axios with appropriate interceptors
+
+## Local Storage Management
+
+- Create a consistent storage schema for chat history
+- Implement versioning for storage format changes
+- Handle storage limits gracefully
+- Provide clear user controls for clearing/managing storage
+- Back up important user data before destructive operations
+
+## Git Workflow
+
+- Commit after each completed story or significant component milestone
+- Write descriptive commit messages following conventional commits:
+  - Format: `type(scope): description`
+  - Types: feat, fix, docs, style, refactor, test, chore
+  - Example: `feat(message-bubble): add support for code blocks`
+- Keep commits focused on a single logical change
+- Include component screenshots in commit descriptions for UI changes
+- Create a new branch for each major feature
+
+## Storybook 8 Guidelines
+
+- Create stories for each component using CSF (Component Story Format)
+- Include stories for all significant component states and variants
+- Use the `autodocs` tag for basic documentation
+- Take advantage of Storybook 8 features like story rendering, interaction testing
+- Test components in isolation before integration
+- Commit after each story is completed and tested
+
+## Testing
+
+- All components should have corresponding Storybook stories
+- Include basic unit tests for complex logic
+- Test edge cases (loading, error, empty states)
+- Mock API calls in tests to avoid real network requests
+
+## Naming Conventions
+
+- Components: PascalCase (e.g., `MessageBubble.svelte`)
+- Stores: camelCase (e.g., `messageStore.js`)
+- Files: Match the component name (e.g., `MessageBubble.svelte`)
+- Stories: Match component name with `.stories.js` suffix
+- Functions: Descriptive verbs (e.g., `fetchMessages` not `getMessages`)
+- Boolean variables: 'is', 'has', or 'should' prefix (e.g., `isLoading`)
+
+## Deployment Considerations
+
+- Set up automated deployments to static hosting
+- Include proper 404 handling for SPA routing
+- Implement environment-specific configurations
+- Test on multiple browsers and devices before deployment
+- Validate production builds locally before pushing
+
+## Task Tracking
+
+- Update the `.cursor-tasks` file after each completed task
+- Begin each session by reviewing the `.cursor-tasks` file
+- Mark tasks as completed with timestamps and commit hashes
+- Break down complex tasks into smaller subtasks
+- Document any architectural decisions in the task comments

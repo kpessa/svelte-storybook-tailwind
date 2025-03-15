@@ -1,0 +1,151 @@
+# LLM Chat Interface Development Tasks
+
+## Completed
+- [x] Initial project setup with Svelte 4, Storybook 8, and Tailwind (2025-03-11)
+- [x] Decision to create a static website version (2025-03-11)
+- [x] Project configuration
+  - [x] Create initial project structure with atomic design folders (2025-03-15)
+  - [x] Create first atomic component (Button) with Storybook stories (2025-03-15)
+
+## In Progress
+- [ ] Create atomic UI components
+  - [ ] Text input component with stories
+    - [ ] Basic input
+    - [ ] With placeholder
+    - [ ] With validation
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] Message bubble component with stories
+    - [ ] User message
+    - [ ] AI message
+    - [ ] Loading state
+    - [ ] Code block support
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] File attachment component with stories
+    - [ ] Image preview
+    - [ ] Document preview
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] Model selector component with stories
+    - [ ] Implementation
+    - [ ] Dropdown styles
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+
+## Planned
+- [ ] Create core utilities
+  - [ ] Set up secure client-side API key management
+  - [ ] Create local storage service for chat history
+  - [ ] Implement API service utilities
+  - [ ] Git commit
+
+- [ ] Create atomic UI components
+  - [ ] Button component with stories
+    - [ ] Primary/Secondary/Ghost variants
+    - [ ] Icon support
+    - [ ] Disabled state
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] Text input component with stories
+    - [ ] Basic input
+    - [ ] With placeholder
+    - [ ] With validation
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] Message bubble component with stories
+    - [ ] User message
+    - [ ] AI message
+    - [ ] Loading state
+    - [ ] Code block support
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] File attachment component with stories
+    - [ ] Image preview
+    - [ ] Document preview
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+  - [ ] Model selector component with stories
+    - [ ] Implementation
+    - [ ] Dropdown styles
+    - [ ] Tests in Storybook
+    - [ ] Git commit
+
+- [ ] Build composite components
+  - [ ] Message list component
+    - [ ] Implementation with virtualization
+    - [ ] Stories
+    - [ ] Git commit
+  - [ ] Input area with file upload
+    - [ ] Implementation
+    - [ ] Screenshot paste functionality
+    - [ ] Stories
+    - [ ] Git commit
+  - [ ] Chat header component
+    - [ ] Implementation
+    - [ ] Stories
+    - [ ] Git commit
+  - [ ] Settings panel component
+    - [ ] Implementation
+    - [ ] Stories
+    - [ ] Git commit
+
+- [ ] Implement core functionality
+  - [ ] Create Svelte stores for chat state
+    - [ ] Message store
+    - [ ] Settings store
+    - [ ] Git commit
+  - [ ] Implement message rendering
+    - [ ] Git commit
+  - [ ] Implement user input handling
+    - [ ] Git commit
+  - [ ] Add client-side file handling
+    - [ ] Git commit
+
+- [ ] API integration
+  - [ ] Create client-side API services
+    - [ ] Git commit
+  - [ ] OpenAI/ChatGPT integration
+    - [ ] Git commit
+  - [ ] Anthropic/Claude integration
+    - [ ] Git commit
+  - [ ] Deepseek integration
+    - [ ] Git commit
+  - [ ] Error handling and recovery
+    - [ ] Git commit
+
+- [ ] Local storage implementation
+  - [ ] Save/load chat history
+    - [ ] Git commit
+  - [ ] Save/load user settings
+    - [ ] Git commit
+  - [ ] API key secure storage
+    - [ ] Git commit
+
+- [ ] User interface enhancements
+  - [ ] Implement light/dark mode
+    - [ ] Git commit
+  - [ ] Add responsive design for mobile devices
+    - [ ] Git commit
+  - [ ] Implement accessibility features
+    - [ ] Git commit
+
+- [ ] Static deployment preparation
+  - [ ] Optimize bundle size
+    - [ ] Git commit
+  - [ ] Configure static site generation
+    - [ ] Git commit
+  - [ ] Add proper SPA routing
+    - [ ] Git commit
+  - [ ] Configure GitHub Pages/Netlify/Vercel deployment
+    - [ ] Git commit
+
+- [ ] Testing and finalization
+  - [ ] Cross-browser testing
+    - [ ] Git commit
+  - [ ] Mobile device testing
+    - [ ] Git commit
+  - [ ] Accessibility testing
+    - [ ] Git commit
+  - [ ] Performance optimization
+    - [ ] Git commit
