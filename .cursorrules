@@ -96,10 +96,27 @@ These rules guide the development of our static LLM Chat Interface using Svelte 
 
 ## Storybook 8 Guidelines
 
-- Create stories for each component using CSF (Component Story Format)
+- Create stories using Svelte CSF format with `.stories.svelte` files
+- Use `<Meta>` and `<Story>` components from `@storybook/addon-svelte-csf`
 - Include stories for all significant component states and variants
 - Use the `autodocs` tag for basic documentation
-- Take advantage of Storybook 8 features like story rendering, interaction testing
+- Follow this story structure:
+
+  ```svelte
+  <script>
+    import { Meta, Story } from '@storybook/addon-svelte-csf';
+    import ComponentName from './ComponentName.svelte';
+  </script>
+
+  <Meta title="Category/ComponentName" component={ComponentName} />
+
+  <Story name="VariantName">
+    <ComponentName>Content</ComponentName>
+  </Story>
+  ```
+
+- Group related stories by component variant
+- Add descriptive comments above each story group
 - Test components in isolation before integration
 - Commit after each story is completed and tested
 
