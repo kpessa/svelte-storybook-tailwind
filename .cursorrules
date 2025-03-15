@@ -134,3 +134,13 @@ These rules guide the development of our static LLM Chat Interface using Svelte 
 - Mark tasks as completed with timestamps and commit hashes
 - Break down complex tasks into smaller subtasks
 - Document any architectural decisions in the task comments
+
+## TypeScript Validation
+
+- Run `npx svelte-check` after making changes to verify TypeScript types
+- Fix all TypeScript errors before committing changes
+- Continue iterating on solutions until there are no type errors
+- Document any type-related decisions or workarounds in comments
+- Use strict TypeScript types and avoid using `any`
+- Ensure all components have proper type definitions
+- Add JSDoc comments for complex type definitions
