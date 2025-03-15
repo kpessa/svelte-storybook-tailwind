@@ -1,6 +1,8 @@
-<!-- MessageBubble.svelte - Component for displaying chat messages with support for code blocks -->
+<!-- MessageBubble.svelte - Component for displaying chat messages with support for code blocks using shadcn-svelte -->
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
+  import * as Card from '$lib/components/ui/card';
+  import { cn } from '$lib/utils';
 
   interface $$Props extends HTMLAttributes<HTMLDivElement> {
     type: 'user' | 'ai';
@@ -16,9 +18,11 @@
 
   // Reactive declarations for styling
   $: isAI = type === 'ai';
-  $: bubbleClasses = `flex max-w-[80%] ${isAI ? 'self-start' : 'self-end'} rounded-lg p-3 ${
-    isAI ? 'bg-gray-100 text-gray-900' : 'bg-blue-600 text-white'
-  }`;
+  $: bubbleClasses = cn(
+    'max-w-[80%]',
+    isAI ? 'self-start' : 'self-end',
+    isAI ? 'bg-muted text-foreground' : 'bg-primary text-primary-foreground'
+  );
 
   // Function to detect and format code blocks
   function formatContent(text: string): string {
@@ -32,13 +36,15 @@
   $: formattedContent = formatContent(content);
 </script>
 
-<div class={bubbleClasses} {...$$restProps}>
-  <div class="flex w-full flex-col gap-1">
+<Card.Root class={cn(bubbleClasses, $$props.class)}>
+  <Card.Content class="p-3">
     {#if isLoading}
       <div class="flex gap-2">
-        <div class="h-2 w-2 animate-bounce rounded-full bg-gray-400" />
-        <div class="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:0.2s]" />
-        <div class="h-2 w-2 animate-bounce rounded-full bg-gray-400 [animation-delay:0.4s]" />
+        <div class="h-2 w-2 animate-bounce rounded-full bg-muted-foreground" />
+        <div
+          class="h-2 w-2 animate-bounce rounded-full bg-muted-foreground [animation-delay:0.2s]" />
+        <div
+          class="h-2 w-2 animate-bounce rounded-full bg-muted-foreground [animation-delay:0.4s]" />
       </div>
     {:else}
       <div class="break-words">
@@ -50,5 +56,5 @@
         </div>
       {/if}
     {/if}
-  </div>
-</div>
+  </Card.Content>
+</Card.Root>

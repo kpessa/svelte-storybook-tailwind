@@ -1,6 +1,9 @@
-<!-- FileAttachment.svelte - Component for displaying file attachments with preview support -->
+<!-- FileAttachment.svelte - Component for displaying file attachments with preview support using shadcn-svelte -->
 <script lang="ts">
   import type { HTMLAttributes } from 'svelte/elements';
+  import * as Card from '$lib/components/ui/card';
+  import { Button } from '$lib/components/ui/button';
+  import { cn } from '$lib/utils';
 
   interface $$Props extends HTMLAttributes<HTMLDivElement> {
     file: File;
@@ -44,44 +47,52 @@
   }
 
   $: fileIcon = getFileIcon(fileExtension);
+
+  // Handle remove button click with preventDefault
+  function handleRemove(event: MouseEvent) {
+    event.preventDefault();
+    if (onRemove) onRemove();
+  }
 </script>
 
-<div
-  class="group relative flex w-full max-w-xs rounded-lg border border-gray-200 bg-white p-2 shadow-sm">
+<Card.Root class={cn('group relative w-full max-w-xs', $$props.class)}>
   {#if showRemoveButton && onRemove}
-    <button
-      type="button"
-      class="absolute -right-2 -top-2 hidden h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white shadow-sm transition-all hover:bg-red-600 group-hover:flex"
-      on:click|preventDefault={onRemove}
+    <Button
+      variant="destructive"
+      size="icon"
+      class="absolute -right-2 -top-2 hidden h-6 w-6 rounded-full shadow-sm group-hover:flex"
+      on:click={handleRemove}
       aria-label="Remove file">
       ×
-    </button>
+    </Button>
   {/if}
 
-  <div class="flex w-full gap-3">
-    {#if isImage && previewUrl}
-      <div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
-        <img src={previewUrl} alt={file.name} class="h-full w-full object-cover" loading="lazy" />
-      </div>
-    {:else}
-      <div
-        class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md bg-gray-100 text-2xl">
-        {fileIcon}
-      </div>
-    {/if}
-
-    <div class="flex min-w-0 flex-1 flex-col justify-center">
-      <p class="truncate text-sm font-medium text-gray-900" title={file.name}>
-        {file.name}
-      </p>
-      <p class="text-xs text-gray-500">
-        {formatFileSize(file.size)}
-      </p>
-      {#if file.type}
-        <p class="text-xs text-gray-400">
-          {file.type}
-        </p>
+  <Card.Content class="p-2">
+    <div class="flex w-full gap-3">
+      {#if isImage && previewUrl}
+        <div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
+          <img src={previewUrl} alt={file.name} class="h-full w-full object-cover" loading="lazy" />
+        </div>
+      {:else}
+        <div
+          class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-md bg-muted text-2xl">
+          {fileIcon}
+        </div>
       {/if}
+
+      <div class="flex min-w-0 flex-1 flex-col justify-center">
+        <p class="truncate text-sm font-medium text-foreground" title={file.name}>
+          {file.name}
+        </p>
+        <p class="text-xs text-muted-foreground">
+          {formatFileSize(file.size)}
+        </p>
+        {#if file.type}
+          <p class="text-xs text-muted-foreground/70">
+            {file.type}
+          </p>
+        {/if}
+      </div>
     </div>
-  </div>
-</div>
+  </Card.Content>
+</Card.Root>

@@ -1,7 +1,9 @@
-<!-- TextInput.svelte - Reusable text input component with validation support -->
+<!-- TextInput.svelte - Reusable text input component with validation support using shadcn-svelte -->
 <script lang="ts">
+  import { Input } from '$lib/components/ui/input';
+  import { cn } from '$lib/utils';
   import type { HTMLInputAttributes } from 'svelte/elements';
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
 
   interface $$Props extends HTMLInputAttributes {
     value?: string;
@@ -29,14 +31,23 @@
     validate: { valid: boolean; message: string };
   }>();
 
-  let inputElement: HTMLInputElement;
+  let inputElement: HTMLInputElement | null = null;
+  let inputWrapper: HTMLDivElement;
+
+  onMount(() => {
+    // Find the actual input element inside the Input component
+    if (inputWrapper) {
+      inputElement = inputWrapper.querySelector('input');
+    }
+  });
+
   let isValid = true;
 
-  const baseClasses =
-    'w-full px-4 py-2 text-gray-900 placeholder-gray-500 border rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors duration-150 ease-in-out';
-  const validClasses = 'border-gray-300 focus:border-blue-500 focus:ring-blue-500';
-  const errorClasses = 'border-red-300 focus:border-red-500 focus:ring-red-500';
-  const disabledClasses = 'bg-gray-100 cursor-not-allowed';
+  // Define classes for error state
+  $: inputClasses = cn(
+    error ? 'border-destructive focus-visible:ring-destructive' : '',
+    $$props.class
+  );
 
   function validate() {
     if (!inputElement) return;
@@ -63,32 +74,31 @@
     dispatch('change', value);
     validate();
   }
-
-  $: inputClasses = `${baseClasses} ${error ? errorClasses : validClasses} ${disabled ? disabledClasses : ''}`;
 </script>
 
-{#if label}
-  <label class="mb-1 block text-sm font-medium text-gray-700" for={$$props.id}>
-    {label}
-    {#if required}
-      <span class="text-red-500">*</span>
-    {/if}
-  </label>
-{/if}
+<div bind:this={inputWrapper}>
+  {#if label}
+    <label class="mb-1 block text-sm font-medium text-foreground" for={$$props.id}>
+      {label}
+      {#if required}
+        <span class="text-destructive">*</span>
+      {/if}
+    </label>
+  {/if}
 
-<input
-  {...$$restProps}
-  bind:this={inputElement}
-  {value}
-  {placeholder}
-  {required}
-  {disabled}
-  {pattern}
-  class={inputClasses}
-  on:input={handleInput}
-  on:change={handleChange}
-  on:blur={validate} />
+  <Input
+    {value}
+    {placeholder}
+    {required}
+    {disabled}
+    {pattern}
+    class={inputClasses}
+    on:input={handleInput}
+    on:change={handleChange}
+    on:blur={validate}
+    {...$$restProps} />
 
-{#if error}
-  <p class="mt-1 text-sm text-red-600">{error}</p>
-{/if}
+  {#if error}
+    <p class="mt-1 text-sm text-destructive">{error}</p>
+  {/if}
+</div>

@@ -55,3 +55,20 @@
 <Story name="Ghost Disabled">
   <Button variant="ghost" disabled>Disabled Button</Button>
 </Story>
+
+<!-- Size Variants -->
+<Story name="Small Size">
+  <Button variant="primary" size="sm">Small Button</Button>
+</Story>
+
+<Story name="Default Size">
+  <Button variant="primary" size="default">Default Button</Button>
+</Story>
+
+<Story name="Large Size">
+  <Button variant="primary" size="lg">Large Button</Button>
+</Story>
+
+<Story name="Icon Size">
+  <Button variant="primary" size="icon" icon="👋"></Button>
+</Story>
