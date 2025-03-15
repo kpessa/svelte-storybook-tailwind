@@ -6,68 +6,40 @@
 - [x] Project configuration
   - [x] Create initial project structure with atomic design folders (2025-03-15)
   - [x] Create first atomic component (Button) with Storybook stories (2025-03-15)
+- [x] Create atomic UI components
+  - [x] Text input component with stories (2025-03-15)
+    - [x] Basic input
+    - [x] With placeholder
+    - [x] With validation
+    - [x] Tests in Storybook
+  - [x] Message bubble component with stories (2025-03-15)
+    - [x] User message
+    - [x] AI message
+    - [x] Loading state
+    - [x] Code block support
+    - [x] Tests in Storybook
+  - [x] File attachment component with stories (2025-03-15)
+    - [x] Image preview
+    - [x] Document preview
+    - [x] Tests in Storybook
+  - [x] Model selector component with stories (2025-03-15)
+    - [x] Implementation
+    - [x] Dropdown styles
+    - [x] Tests in Storybook
 
 ## In Progress
-- [ ] Create atomic UI components
-  - [ ] Text input component with stories
-    - [ ] Basic input
-    - [ ] With placeholder
-    - [ ] With validation
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] Message bubble component with stories
-    - [ ] User message
-    - [ ] AI message
-    - [ ] Loading state
-    - [ ] Code block support
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] File attachment component with stories
-    - [ ] Image preview
-    - [ ] Document preview
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] Model selector component with stories
-    - [ ] Implementation
-    - [ ] Dropdown styles
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-
-## Planned
 - [ ] Create core utilities
   - [ ] Set up secure client-side API key management
   - [ ] Create local storage service for chat history
   - [ ] Implement API service utilities
   - [ ] Git commit
 
+## Planned
 - [ ] Create atomic UI components
   - [ ] Button component with stories
     - [ ] Primary/Secondary/Ghost variants
     - [ ] Icon support
     - [ ] Disabled state
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] Text input component with stories
-    - [ ] Basic input
-    - [ ] With placeholder
-    - [ ] With validation
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] Message bubble component with stories
-    - [ ] User message
-    - [ ] AI message
-    - [ ] Loading state
-    - [ ] Code block support
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] File attachment component with stories
-    - [ ] Image preview
-    - [ ] Document preview
-    - [ ] Tests in Storybook
-    - [ ] Git commit
-  - [ ] Model selector component with stories
-    - [ ] Implementation
-    - [ ] Dropdown styles
     - [ ] Tests in Storybook
     - [ ] Git commit
 
